@@ -1,1 +1,77 @@
 /* App.css */
+.running-tracker-box {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
+}
+
+/* RecordHeader */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1rem 0;
+}
+
+/* RecordForm */
+.form {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    padding: 1rem 0;
+
+    font-weight: 500;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form input {
+    padding: 0.5rem 1rem;
+    border: 1.5px solid #eee;
+    border-radius: 0.3rem;
+}
+
+.form input:focus {
+    background-color: #fcfcfc;
+}
+
+.form button {
+    padding: 0.5rem 1rem;
+    background-color: #464646;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.form button:hover {
+    background-color: #000000;
+}
+
+/* RecordList */
+.record-list {
+    background-color: #fcfcfc;
+    padding: 2rem 1.5rem;
+    border: 1.5px solid #eee;
+    border-radius: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.record-list .empty-message {
+    color: #808080;
+}
