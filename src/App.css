@@ -47,13 +47,8 @@
 }
 
 .form button {
-    padding: 0.5rem 1rem;
     background-color: #464646;
     color: white;
-    border: none;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    font-weight: 500;
 }
 
 .form button:hover {
@@ -63,7 +58,6 @@
 /* RecordList */
 .record-list {
     background-color: #fcfcfc;
-    padding: 2rem 1.5rem;
     border: 1.5px solid #eee;
     border-radius: 0.5rem;
 
@@ -74,4 +68,68 @@
 
 .record-list .empty-message {
     color: #808080;
+    padding: 2rem 1.5rem;
+}
+
+.record-list-box {
+    width: 100%;
+}
+
+.record-list-header,
+.record-item {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 1rem;
+
+    border-bottom: 1px solid #eee;
+}
+
+.record-list-header {
+    font-weight: 700;
+}
+
+/* RecordItem */
+.record-item {
+    background-color: white;
+}
+
+.record-item div:first-child {
+    font-weight: 700;
+}
+
+.record-item .total span {
+    display: inline-block;
+    background-color: #eee5ff;
+    color: #7a007a;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 30px;
+}
+
+.btn-section {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.edit-btn:hover {
+    background-color: #67b169;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e05b66;
+    color: white;
+}
+
+/* 공통 */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }

@@ -77,7 +77,9 @@ const RecordForm = ({ sortBy }) => {
                     onChange={onChange}
                 />
 
-                <button type="submit">추가</button>
+                <button className="btn" type="submit">
+                    추가
+                </button>
             </form>
 
             <RecordList recordList={recordList} sortBy={sortBy} />

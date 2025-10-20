@@ -27,11 +27,20 @@ const RecordList = ({ recordList, sortBy }) => {
             {!recordList.length ? (
                 <div className="empty-message">아직 기록이 없습니다. 날짜와 거리를 입력해 첫 기록을 추가해보세요!</div>
             ) : (
-                <ul>
+                <div className="record-list-box">
+                    <div className="record-list-header">
+                        <div>날짜</div>
+                        <div>러닝(km)</div>
+                        <div>워킹(km)</div>
+                        <div>휴식(분)</div>
+                        <div>총합(km)</div>
+                        <div>작업</div>
+                    </div>
+
                     {sortedList.map((record, index) => (
                         <RecordItem key={index} record={record} />
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );
