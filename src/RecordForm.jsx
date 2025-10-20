@@ -19,10 +19,12 @@ const initRecord = {
 
 const RecordForm = ({ sortBy }) => {
     const [record, setRecord] = useState(initRecord);
-    const [recordList, setRecordList] = useState([]);
+    const [recordList, setRecordList] = useState(() => {
+        const savedRecords = localStorage.getItem('runningRecords'); // localStorage에서 기록 불러오기
+        return savedRecords ? JSON.parse(savedRecords) : [];
+    });
 
     const onChange = (e) => {
-        // console.log(e.target);
         const { name, value, type } = e.target;
 
         // type이 number면 문자열을 숫자로 변환하여 앞 0 제거
@@ -32,22 +34,24 @@ const RecordForm = ({ sortBy }) => {
     const onSubmit = (e) => {
         e.preventDefault(); // 새로고침 방지
 
-        console.log(record);
-
+        // 날짜 중복 체크
         const existingRecords = recordList.filter((r) => r.date === record.date);
-
         if (existingRecords.length) {
             alert('같은 날짜가 이미 존재합니다.');
             setRecord(initRecord);
             return;
         }
 
-        setRecordList([...recordList, record]);
+        // 기록 추가 및 localStorage 저장
+        const newList = [...recordList, record];
+        setRecordList(newList);
+        localStorage.setItem('runningRecords', JSON.stringify(newList));
+
         setRecord(initRecord);
     };
 
     return (
-        <>
+        <div>
             <form className="form" onSubmit={onSubmit}>
                 <Input type="date" id="date" name="date" label="📅 날짜" value={record.date} onChange={onChange} />
                 <Input
@@ -83,7 +87,7 @@ const RecordForm = ({ sortBy }) => {
             </form>
 
             <RecordList recordList={recordList} sortBy={sortBy} />
-        </>
+        </div>
     );
 };
 
