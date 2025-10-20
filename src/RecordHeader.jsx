@@ -1,10 +1,10 @@
 const RecordHeader = ({ sortBy, setSortBy }) => {
     const options = [
-        { key: 'date', label: '날짜순' },
-        { key: 'total', label: '총 거리순' },
-        { key: 'running', label: '러닝순' },
-        { key: 'walking', label: '걸음순' },
-        { key: 'rest', label: '쉬는 시간순' },
+        { key: 'date', label: '날짜' },
+        { key: 'total', label: '총 거리' },
+        { key: 'running', label: '러닝' },
+        { key: 'walking', label: '워킹' },
+        { key: 'rest', label: '휴식' },
     ];
 
     return (
