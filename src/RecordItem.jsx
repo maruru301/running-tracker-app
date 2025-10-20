@@ -8,7 +8,7 @@ const RecordItem = ({ record }) => {
             <div>{walking}</div>
             <div>{rest}</div>
             <div className="total">
-                <span>{running + walking}</span>
+                <span>{(running + walking).toFixed(1)}</span>
             </div>
             <div className="btn-section">
                 <button className="btn edit-btn">수정</button>
