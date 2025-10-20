@@ -17,7 +17,7 @@ const initRecord = {
     rest: 0,
 };
 
-const RecordForm = () => {
+const RecordForm = ({ sortBy }) => {
     const [record, setRecord] = useState(initRecord);
     const [recordList, setRecordList] = useState([]);
 
@@ -80,7 +80,7 @@ const RecordForm = () => {
                 <button type="submit">추가</button>
             </form>
 
-            <RecordList recordList={recordList} />
+            <RecordList recordList={recordList} sortBy={sortBy} />
         </>
     );
 };
