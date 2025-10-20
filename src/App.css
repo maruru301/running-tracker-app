@@ -20,6 +20,30 @@
     padding: 1rem 0;
 }
 
+.sort-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-section span {
+    font-size: 14px;
+    color: #808080;
+}
+
+.sort-section select {
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.sort-section select:focus {
+    outline: none;
+    border-color: #464646;
+}
+
 /* RecordForm */
 .form {
     display: flex;
