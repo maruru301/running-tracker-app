@@ -34,6 +34,14 @@ const RecordForm = () => {
 
         console.log(record);
 
+        const existingRecords = recordList.filter((r) => r.date === record.date);
+
+        if (existingRecords.length) {
+            alert('같은 날짜가 이미 존재합니다.');
+            setRecord(initRecord);
+            return;
+        }
+
         setRecordList([...recordList, record]);
         setRecord(initRecord);
     };
