@@ -12,11 +12,18 @@ const initRecord = {
 const RecordForm = ({ sortBy }) => {
     const [record, setRecord] = useState(initRecord);
 
-    // localStorage에서 기록 불러오기
-    const [recordList, setRecordList] = useState(() => {
+    // localStorage 처리 함수
+    const loadRecords = () => {
         const savedRecords = localStorage.getItem('runningRecords');
         return savedRecords ? JSON.parse(savedRecords) : [];
-    });
+    };
+
+    const saveRecords = (records) => {
+        localStorage.setItem('runningRecords', JSON.stringify(records));
+    };
+
+    // localStorage에서 기록 불러오기
+    const [recordList, setRecordList] = useState(loadRecords());
 
     // 입력값 변경 시
     const onChange = (e) => {
@@ -38,11 +45,10 @@ const RecordForm = ({ sortBy }) => {
             return;
         }
 
-        // 기록 추가 및 localStorage 저장
         const newList = [...recordList, record];
-        setRecordList(newList);
-        localStorage.setItem('runningRecords', JSON.stringify(newList));
 
+        setRecordList(newList);
+        saveRecords(newList); // 로컬 스토리지 저장
         setRecord(initRecord);
     };
 
@@ -53,7 +59,7 @@ const RecordForm = ({ sortBy }) => {
         });
 
         setRecordList(newList);
-        localStorage.setItem('runningRecords', JSON.stringify(newList));
+        saveRecords(newList); // 로컬 스토리지 저장
     };
 
     // 기록 삭제
@@ -63,7 +69,7 @@ const RecordForm = ({ sortBy }) => {
 
         const newList = recordList.filter((record) => record.date !== date);
         setRecordList(newList);
-        localStorage.setItem('runningRecords', JSON.stringify(newList));
+        saveRecords(newList); // 로컬 스토리지 저장
     };
 
     return (

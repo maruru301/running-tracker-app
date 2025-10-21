@@ -7,6 +7,9 @@ const RecordItem = ({ record, onUpdate, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false); // 수정 상태
     const [editedRecord, setEditedRecord] = useState({ running, walking, rest }); // 수정할 데이터
 
+    // 총 거리 합
+    const total = (isEditing ? editedRecord.running : running) + (isEditing ? editedRecord.walking : walking);
+
     // 입력값 변경 시
     const onChange = (e) => {
         const { name, value } = e.target;
@@ -52,11 +55,7 @@ const RecordItem = ({ record, onUpdate, onDelete }) => {
             )}
 
             <div className="total">
-                <span>
-                    {(
-                        (isEditing ? editedRecord.running : running) + (isEditing ? editedRecord.walking : walking)
-                    ).toFixed(1)}
-                </span>
+                <span>{total.toFixed(1)}</span>
             </div>
 
             <div className="btn-section">
