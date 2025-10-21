@@ -19,11 +19,14 @@ const initRecord = {
 
 const RecordForm = ({ sortBy }) => {
     const [record, setRecord] = useState(initRecord);
+
+    // localStorage에서 기록 불러오기
     const [recordList, setRecordList] = useState(() => {
-        const savedRecords = localStorage.getItem('runningRecords'); // localStorage에서 기록 불러오기
+        const savedRecords = localStorage.getItem('runningRecords');
         return savedRecords ? JSON.parse(savedRecords) : [];
     });
 
+    // 입력값 변경 시
     const onChange = (e) => {
         const { name, value, type } = e.target;
 
@@ -31,6 +34,7 @@ const RecordForm = ({ sortBy }) => {
         setRecord({ ...record, [name]: type === 'number' ? Number(value) : value });
     };
 
+    // 기록 추가
     const onSubmit = (e) => {
         e.preventDefault(); // 새로고침 방지
 
@@ -48,6 +52,16 @@ const RecordForm = ({ sortBy }) => {
         localStorage.setItem('runningRecords', JSON.stringify(newList));
 
         setRecord(initRecord);
+    };
+
+    // 기록 수정
+    const onUpdate = (date, updatedData) => {
+        const newList = recordList.map((record) => {
+            return record.date === date ? { ...record, ...updatedData } : record;
+        });
+
+        setRecordList(newList);
+        localStorage.setItem('runningRecords', JSON.stringify(newList));
     };
 
     return (
@@ -86,7 +100,7 @@ const RecordForm = ({ sortBy }) => {
                 </button>
             </form>
 
-            <RecordList recordList={recordList} sortBy={sortBy} />
+            <RecordList recordList={recordList} sortBy={sortBy} onUpdate={onUpdate} />
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import RecordItem from './RecordItem';
 
-const RecordList = ({ recordList, sortBy }) => {
+const RecordList = ({ recordList, sortBy, onUpdate }) => {
     const getSortList = () => {
         const sorted = [...recordList];
 
@@ -38,7 +38,7 @@ const RecordList = ({ recordList, sortBy }) => {
                     </div>
 
                     {sortedList.map((record, index) => (
-                        <RecordItem key={index} record={record} />
+                        <RecordItem key={index} record={record} onUpdate={onUpdate} />
                     ))}
                 </div>
             )}
