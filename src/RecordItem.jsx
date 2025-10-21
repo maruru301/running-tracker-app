@@ -1,7 +1,7 @@
 import Input from './components/Input';
 import { useState } from 'react';
 
-const RecordItem = ({ record, onUpdate }) => {
+const RecordItem = ({ record, onUpdate, onDelete }) => {
     const { date, running, walking, rest } = record;
 
     const [isEditing, setIsEditing] = useState(false); // 수정 상태
@@ -86,7 +86,9 @@ const RecordItem = ({ record, onUpdate }) => {
                         >
                             수정
                         </button>
-                        <button className="btn delete-btn">삭제</button>
+                        <button className="btn delete-btn" onClick={() => onDelete(date)}>
+                            삭제
+                        </button>
                     </>
                 )}
             </div>

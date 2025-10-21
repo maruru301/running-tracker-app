@@ -56,6 +56,16 @@ const RecordForm = ({ sortBy }) => {
         localStorage.setItem('runningRecords', JSON.stringify(newList));
     };
 
+    // 기록 삭제
+    const onDelete = (date) => {
+        const confirmMessage = window.confirm('정말 삭제하시겠습니까?'); // 사용자 확인
+        if (!confirmMessage) return;
+
+        const newList = recordList.filter((record) => record.date !== date);
+        setRecordList(newList);
+        localStorage.setItem('runningRecords', JSON.stringify(newList));
+    };
+
     return (
         <div>
             <form className="form" onSubmit={onSubmit}>
@@ -92,7 +102,7 @@ const RecordForm = ({ sortBy }) => {
                 </button>
             </form>
 
-            <RecordList recordList={recordList} sortBy={sortBy} onUpdate={onUpdate} />
+            <RecordList recordList={recordList} sortBy={sortBy} onUpdate={onUpdate} onDelete={onDelete} />
         </div>
     );
 };
