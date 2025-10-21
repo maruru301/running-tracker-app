@@ -1,14 +1,6 @@
+import Input from './components/Input';
 import RecordList from './RecordList';
 import { useState } from 'react';
-
-const Input = ({ type, id, name, label, value, onChange, step }) => {
-    return (
-        <label htmlFor={id}>
-            <span>{label}</span>
-            <input type={type} id={id} name={name} value={value} onChange={onChange} min={0} step={step} required />
-        </label>
-    );
-};
 
 const initRecord = {
     date: '',
@@ -19,11 +11,21 @@ const initRecord = {
 
 const RecordForm = ({ sortBy }) => {
     const [record, setRecord] = useState(initRecord);
-    const [recordList, setRecordList] = useState(() => {
-        const savedRecords = localStorage.getItem('runningRecords'); // localStorage에서 기록 불러오기
-        return savedRecords ? JSON.parse(savedRecords) : [];
-    });
 
+    // localStorage 처리 함수
+    const loadRecords = () => {
+        const savedRecords = localStorage.getItem('runningRecords');
+        return savedRecords ? JSON.parse(savedRecords) : [];
+    };
+
+    const saveRecords = (records) => {
+        localStorage.setItem('runningRecords', JSON.stringify(records));
+    };
+
+    // localStorage에서 기록 불러오기
+    const [recordList, setRecordList] = useState(loadRecords());
+
+    // 입력값 변경 시
     const onChange = (e) => {
         const { name, value, type } = e.target;
 
@@ -31,6 +33,7 @@ const RecordForm = ({ sortBy }) => {
         setRecord({ ...record, [name]: type === 'number' ? Number(value) : value });
     };
 
+    // 기록 추가
     const onSubmit = (e) => {
         e.preventDefault(); // 새로고침 방지
 
@@ -42,12 +45,31 @@ const RecordForm = ({ sortBy }) => {
             return;
         }
 
-        // 기록 추가 및 localStorage 저장
         const newList = [...recordList, record];
-        setRecordList(newList);
-        localStorage.setItem('runningRecords', JSON.stringify(newList));
 
+        setRecordList(newList);
+        saveRecords(newList); // 로컬 스토리지 저장
         setRecord(initRecord);
+    };
+
+    // 기록 수정
+    const onUpdate = (date, updatedData) => {
+        const newList = recordList.map((record) => {
+            return record.date === date ? { ...record, ...updatedData } : record;
+        });
+
+        setRecordList(newList);
+        saveRecords(newList); // 로컬 스토리지 저장
+    };
+
+    // 기록 삭제
+    const onDelete = (date) => {
+        const confirmMessage = window.confirm('정말 삭제하시겠습니까?'); // 사용자 확인
+        if (!confirmMessage) return;
+
+        const newList = recordList.filter((record) => record.date !== date);
+        setRecordList(newList);
+        saveRecords(newList); // 로컬 스토리지 저장
     };
 
     return (
@@ -86,7 +108,7 @@ const RecordForm = ({ sortBy }) => {
                 </button>
             </form>
 
-            <RecordList recordList={recordList} sortBy={sortBy} />
+            <RecordList recordList={recordList} sortBy={sortBy} onUpdate={onUpdate} onDelete={onDelete} />
         </div>
     );
 };
