@@ -52,7 +52,11 @@ const RecordItem = ({ record, onUpdate }) => {
             )}
 
             <div className="total">
-                <span>{(running + walking).toFixed(1)}</span>
+                <span>
+                    {(
+                        (isEditing ? editedRecord.running : running) + (isEditing ? editedRecord.walking : walking)
+                    ).toFixed(1)}
+                </span>
             </div>
 
             <div className="btn-section">
@@ -61,13 +65,25 @@ const RecordItem = ({ record, onUpdate }) => {
                         <button className="btn save-btn" onClick={onSave}>
                             저장
                         </button>
-                        <button className="btn cancel-btn" onClick={() => setIsEditing(false)}>
+                        <button
+                            className="btn cancel-btn"
+                            onClick={() => {
+                                setEditedRecord({ running, walking, rest }); // 최신값으로 세팅
+                                setIsEditing(false);
+                            }}
+                        >
                             취소
                         </button>
                     </>
                 ) : (
                     <>
-                        <button className="btn edit-btn" onClick={() => setIsEditing(true)}>
+                        <button
+                            className="btn edit-btn"
+                            onClick={() => {
+                                setEditedRecord({ running, walking, rest }); // 최신값으로 세팅
+                                setIsEditing(true);
+                            }}
+                        >
                             수정
                         </button>
                         <button className="btn delete-btn">삭제</button>
