@@ -1,3 +1,4 @@
+import Input from './components/Input';
 import { useState } from 'react';
 
 const RecordItem = ({ record, onUpdate }) => {
@@ -24,9 +25,23 @@ const RecordItem = ({ record, onUpdate }) => {
 
             {isEditing ? (
                 <>
-                    <input type="number" name="running" value={editedRecord.running} onChange={onChange} step="0.1" />
-                    <input type="number" name="walking" value={editedRecord.walking} onChange={onChange} step="0.1" />
-                    <input type="number" name="rest" value={editedRecord.rest} onChange={onChange} />
+                    <Input
+                        type="number"
+                        id="running"
+                        name="running"
+                        value={editedRecord.running}
+                        onChange={onChange}
+                        step="0.1"
+                    />
+                    <Input
+                        type="number"
+                        id="walking"
+                        name="walking"
+                        value={editedRecord.walking}
+                        onChange={onChange}
+                        step="0.1"
+                    />
+                    <Input type="number" id="rest" name="rest" value={editedRecord.rest} onChange={onChange} />
                 </>
             ) : (
                 <>
