@@ -1,4 +1,4 @@
-import Input from './components/Input';
+import Input from './common/Input';
 import RecordList from './RecordList';
 import { useState } from 'react';
 

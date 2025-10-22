@@ -1,4 +1,4 @@
-import Input from './components/Input';
+import Input from './common/Input';
 import { useState } from 'react';
 
 const RecordItem = ({ record, onUpdate, onDelete }) => {
