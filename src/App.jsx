@@ -1,7 +1,7 @@
 import './App.css';
 
-import RecordForm from './RecordForm';
-import RecordHeader from './RecordHeader';
+import RecordForm from './components/RecordForm';
+import RecordHeader from './components/RecordHeader';
 import { useState } from 'react';
 
 function App() {
