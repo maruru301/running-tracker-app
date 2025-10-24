@@ -1,16 +1,32 @@
-# React + Vite
+# Running-Tracker-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###  나의 러닝 기록을 관리할 수 있는 토이 프로젝트
 
-Currently, two official plugins are available:
+> 프로젝트 기간 : 2025/10/16 ~ 2025/10/22
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> URL : https://running-tracker-app-ten.vercel.app/
 
-## React Compiler
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🎯 구현 목표
+- CRUD 기능 (추가, 조회, 수정, 삭제)
+- 기록 정렬 기능 (날짜, 총 거리, 러닝, 워킹, 휴식 순)
+- LocalStorage를 통한 데이터 저장
 
-## Expanding the ESLint configuration
+## ⚒️ Skill
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📋구현 기능 & 화면
+| 🏃 기본 화면 |
+|------------|
+| <img width="1000" alt="image" src="https://github.com/user-attachments/assets/8295676d-3b88-4c85-b855-c370970ea401" /> |
+
+| 🛠️ CRUD | 🛠️ 정렬 |
+|------------|------------|
+| ![CRUD](https://github.com/user-attachments/assets/9c8e322f-53fd-4678-aa06-5954ce8af26c) | ![sort](https://github.com/user-attachments/assets/9fbd3189-e0e9-4263-8646-51b5000ad5ad) |
+
+
+
+
+
